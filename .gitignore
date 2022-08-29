@@ -1,0 +1,12 @@
+*.swp
+__pycache__/
+.pytext_cache/
+.env
+.venv
+venv/
+venvw/
+.mypy_cache
+.vscode/
+
+# used to jot down ideas
+scratch.md      
