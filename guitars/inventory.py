@@ -38,8 +38,8 @@ class Inventory:
                 and spec_builder != guitar.builder
             ):
                 continue
-            else:
-                print(f'Match "builder": {spec_builder}')
+            # else:
+            #     print(f'Match "builder": {spec_builder}')
 
             spec_model = spec_guitar.model
             guitar_model = guitar.model
@@ -49,14 +49,14 @@ class Inventory:
                 and spec_model != guitar.model
             ):
                 continue
-            else:
-                print(f'Match "model": {spec_model}')
+            # else:
+            #     print(f'Match "model": {spec_model}')
 
             spec_type = spec_guitar.type
             if spec_type is not None and spec_type != "" and spec_type != guitar.type:
                 continue
-            else:
-                print(f'Match "type": {spec_type}')
+            # else:
+            #     print(f'Match "type": {spec_type}')
 
             spec_back_wood = spec_guitar.back_wood
             if (
@@ -65,8 +65,8 @@ class Inventory:
                 and spec_back_wood != guitar.back_wood
             ):
                 continue
-            else:
-                print(f'Match "back_wood": {spec_back_wood}')
+            # else:
+            #     print(f'Match "back_wood": {spec_back_wood}')
 
             spec_top_wood = spec_guitar.top_wood
             if (
@@ -75,12 +75,12 @@ class Inventory:
                 and spec_top_wood != guitar.top_wood
             ):
                 continue
-            else:
-                print(f'Match "top_wood": {spec_top_wood}')
+            # else:
+            #     print(f'Match "top_wood": {spec_top_wood}')
 
             matches.append(guitar)
 
-        print()
+        # print()
         return matches
 
     def get_inventory(self) -> list:
