@@ -1,5 +1,7 @@
 from typing import Optional
-
+from gbuilder import GBuilder
+from gtype import GType
+from gwood import GWood
 from guitar import Guitar
 
 
@@ -11,11 +13,11 @@ class Inventory:
         self,
         sn: str,
         price: float,
-        builder: str,
+        builder: GBuilder,
         model: str,
-        type: str,
-        back_wood: str,
-        top_wood: str,
+        type: GType,
+        back_wood: GWood,
+        top_wood: GWood,
     ) -> None:
         guitar = Guitar(sn, price, builder, model, type, back_wood, top_wood)
         self._guitars.append(guitar)
@@ -36,18 +38,25 @@ class Inventory:
                 and spec_builder != guitar.builder
             ):
                 continue
+            else:
+                print(f'Match "builder": {spec_builder}')
 
             spec_model = spec_guitar.model
+            guitar_model = guitar.model
             if (
                 spec_model is not None
                 and spec_model != ""
                 and spec_model != guitar.model
             ):
                 continue
+            else:
+                print(f'Match "model": {spec_model}')
 
             spec_type = spec_guitar.type
             if spec_type is not None and spec_type != "" and spec_type != guitar.type:
                 continue
+            else:
+                print(f'Match "type": {spec_type}')
 
             spec_back_wood = spec_guitar.back_wood
             if (
@@ -56,6 +65,8 @@ class Inventory:
                 and spec_back_wood != guitar.back_wood
             ):
                 continue
+            else:
+                print(f'Match "back_wood": {spec_back_wood}')
 
             spec_top_wood = spec_guitar.top_wood
             if (
@@ -64,7 +75,13 @@ class Inventory:
                 and spec_top_wood != guitar.top_wood
             ):
                 continue
+            else:
+                print(f'Match "top_wood": {spec_top_wood}')
 
             matches.append(guitar)
 
+        print()
         return matches
+
+    def get_inventory(self) -> list:
+        return self._guitars

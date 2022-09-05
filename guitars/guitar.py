@@ -1,13 +1,18 @@
+from gbuilder import GBuilder
+from gtype import GType
+from gwood import GWood
+
+
 class Guitar:
     def __init__(
         self,
         sn: str,
         price: float,
-        builder: str,
+        builder: GBuilder,
         model: str,
-        type: str,
-        back_wood: str,
-        top_wood: str,
+        type: GType,
+        back_wood: GWood,
+        top_wood: GWood,
     ) -> None:
         self._sn = sn
         self._price = price
@@ -18,7 +23,7 @@ class Guitar:
         self._top_wood = top_wood
 
     def __str__(self):
-        return f"{self.sn}, {self.price}, {self.builder}, {self.model}, {self.type}, {self.back_wood}, {self.top_wood}"
+        return f"{self.sn}, {self.price}, {self.builder.value}, {self.model}, {self.type.value}, {self.back_wood.value}, {self.top_wood.value}"
 
     @property
     def sn(self) -> str:
@@ -33,7 +38,7 @@ class Guitar:
         self._price = price
 
     @property
-    def builder(self) -> str:
+    def builder(self) -> GBuilder:
         return self._builder
 
     @property
@@ -41,13 +46,13 @@ class Guitar:
         return self._model
 
     @property
-    def type(self) -> str:
+    def type(self) -> GType:
         return self._type
 
     @property
-    def back_wood(self) -> str:
+    def back_wood(self) -> GWood:
         return self._back_wood
 
     @property
-    def top_wood(self) -> str:
+    def top_wood(self) -> GWood:
         return self._top_wood
