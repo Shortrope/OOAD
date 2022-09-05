@@ -16,27 +16,28 @@ def initialize_inventory(inventory: Inventory) -> None:
     inventory.add_guitar(
         "0003", 333.00, GBuilder.MARTIN, "doughnut", GType.ACOUSTIC, GWood.BRAZILIAN_ROSEWOOD, GWood.BRAZILIAN_ROSEWOOD
     )
+    inventory.add_guitar(
+        "0004", 444.00, GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER
+    )
 
 
 def main():
     inventory = Inventory()
     initialize_inventory(inventory)
     
-    print("Printing Inventory...")
-    for guitar in inventory.get_inventory():
-        print(guitar)
-    print()
-
     spec = Guitar("", 0, GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER)
     matches = inventory.search(spec)
 
-    for guitar in matches:
-        print(guitar)
-    # if matches:
-    #     for guitar in matches:
-    #         print(guitar)
-    # else:
-    #     print("Sorry, we have no guitars for you.")
+    if matches:
+        print("You may like these guitars:")
+        for guitar in matches:
+            print(f'{guitar.builder.value.title()} {guitar.model.title()}:')
+            print(f'    {guitar.back_wood.value} back and sides')
+            print(f'    {guitar.top_wood.value} top')
+            print(f'Price: ${guitar.price}')
+            print()
+    else:
+        print("Sorry, we have no guitars for you.")
 
 
 if __name__ == "__main__":
