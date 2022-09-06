@@ -10,3 +10,4 @@ class GWood(Enum):
     ADIRONDACK = 'adirondack'
     ALDER = 'alder'
     SITKA = 'sitka'
+    ANY = 'any'
