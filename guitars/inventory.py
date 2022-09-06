@@ -1,9 +1,10 @@
 from typing import Optional
+
 from gbuilder import GBuilder
 from gtype import GType
+from guitar import Guitar
 from guitarspec import GuitarSpec
 from gwood import GWood
-from guitar import Guitar
 
 
 class Inventory:
@@ -32,19 +33,19 @@ class Inventory:
     def search(self, search_spec: GuitarSpec) -> list:
         matches = []
         for guitar in self._guitars:
-            if (search_spec.builder != guitar.spec.builder):
+            if search_spec.builder != guitar.spec.builder:
                 continue
 
-            if (search_spec.model != guitar.spec.model):
+            if search_spec.model != guitar.spec.model:
                 continue
 
             if search_spec.type != guitar.spec.type:
                 continue
 
-            if (search_spec.back_wood != guitar.spec.back_wood):
+            if search_spec.back_wood != guitar.spec.back_wood:
                 continue
 
-            if (search_spec.top_wood != guitar.spec.top_wood):
+            if search_spec.top_wood != guitar.spec.top_wood:
                 continue
 
             matches.append(guitar)
