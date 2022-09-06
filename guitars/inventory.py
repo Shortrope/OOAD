@@ -1,6 +1,7 @@
 from typing import Optional
 from gbuilder import GBuilder
 from gtype import GType
+from guitarspec import GuitarSpec
 from gwood import GWood
 from guitar import Guitar
 
@@ -28,51 +29,51 @@ class Inventory:
                 return guitar
         return None
 
-    def search(self, spec_guitar: Guitar) -> list:
+    def search(self, search_spec: GuitarSpec) -> list:
         matches = []
         for guitar in self._guitars:
-            spec_builder = spec_guitar.builder
+            spec_builder = search_spec.builder
             if (
                 spec_builder is not None
                 and spec_builder != ""
-                and spec_builder != guitar.builder
+                and spec_builder != guitar.spec.builder
             ):
                 continue
             # else:
             #     print(f'Match "builder": {spec_builder}')
 
-            spec_model = spec_guitar.model
-            guitar_model = guitar.model
+            spec_model = search_spec.model
+            guitar_model = guitar.spec.model
             if (
                 spec_model is not None
                 and spec_model != ""
-                and spec_model != guitar.model
+                and spec_model != guitar.spec.model
             ):
                 continue
             # else:
             #     print(f'Match "model": {spec_model}')
 
-            spec_type = spec_guitar.type
-            if spec_type is not None and spec_type != "" and spec_type != guitar.type:
+            spec_type = search_spec.type
+            if spec_type is not None and spec_type != "" and spec_type != guitar.spec.type:
                 continue
             # else:
             #     print(f'Match "type": {spec_type}')
 
-            spec_back_wood = spec_guitar.back_wood
+            spec_back_wood = search_spec.back_wood
             if (
                 spec_back_wood is not None
                 and spec_back_wood != ""
-                and spec_back_wood != guitar.back_wood
+                and spec_back_wood != guitar.spec.back_wood
             ):
                 continue
             # else:
             #     print(f'Match "back_wood": {spec_back_wood}')
 
-            spec_top_wood = spec_guitar.top_wood
+            spec_top_wood = search_spec.top_wood
             if (
                 spec_top_wood is not None
                 and spec_top_wood != ""
-                and spec_top_wood != guitar.top_wood
+                and spec_top_wood != guitar.spec.top_wood
             ):
                 continue
             # else:

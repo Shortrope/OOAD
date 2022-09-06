@@ -1,9 +1,9 @@
-from nis import match
 from guitar import Guitar
 from gbuilder import GBuilder
 from gtype import GType
 from gwood import GWood
 from inventory import Inventory
+from guitarspec import GuitarSpec
 
 
 def initialize_inventory(inventory: Inventory) -> None:
@@ -25,15 +25,15 @@ def main():
     inventory = Inventory()
     initialize_inventory(inventory)
     
-    spec = Guitar("", 0, GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER)
+    spec = GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER)
     matches = inventory.search(spec)
 
     if matches:
         print("You may like these guitars:")
         for guitar in matches:
-            print(f'{guitar.builder.value.title()} {guitar.model.title()}:')
-            print(f'    {guitar.back_wood.value} back and sides')
-            print(f'    {guitar.top_wood.value} top')
+            print(f'{guitar.spec.builder.value.title()} {guitar.spec.model.title()}, sn#: {guitar.sn}')
+            print(f'    {guitar.spec.back_wood.value} back and sides')
+            print(f'    {guitar.spec.top_wood.value} top')
             print(f'Price: ${guitar.price}')
             print()
     else:
