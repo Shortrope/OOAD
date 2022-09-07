@@ -11,19 +11,15 @@ class Guitar:
         self,
         sn: str,
         price: float,
-        builder: GBuilder,
-        model: str,
-        type: GType,
-        top_wood: GWood,
-        back_wood: GWood,
+        spec: GuitarSpec
     ) -> None:
         self._sn = sn
         self._price = price
-        self._spec = GuitarSpec(builder, model, type, top_wood, back_wood)
+        self._spec = spec
 
     def __str__(self):
         spec = self.spec
-        return f"{self.sn}, {self.price}, {spec.builder.value}, {spec.model}, {spec.type.value}, {spec.back_wood.value}, {spec.top_wood.value}"
+        return f"{self.sn}, {self.price}, {spec.builder.value}, {spec.model}, {spec.type.value}, {spec.num_strings}, {spec.back_wood.value}, {spec.top_wood.value}"
 
     @property
     def sn(self) -> str:

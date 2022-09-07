@@ -8,24 +8,30 @@ from guitarspec import GuitarSpec
 
 def initialize_inventory(inventory: Inventory) -> None:
     inventory.add_guitar(
-        "0001", 111.00, GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER
+        "0001", 111.00, GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, 6, GWood.ALDER, GWood.ALDER)
     )
     inventory.add_guitar(
-        "0002", 222.00, GBuilder.GIBSON, "les paul", GType.ELECTRIC, GWood.MAHOGONEY, GWood.MAHOGONEY
+        "0002", 222.00, GuitarSpec(GBuilder.GIBSON, "les paul", GType.ELECTRIC, 6, GWood.MAHOGONEY, GWood.MAHOGONEY)
     )
     inventory.add_guitar(
-        "0003", 333.00, GBuilder.MARTIN, "doughnut", GType.ACOUSTIC, GWood.BRAZILIAN_ROSEWOOD, GWood.BRAZILIAN_ROSEWOOD
+        "0003", 333.00, GuitarSpec(GBuilder.MARTIN, "doughnut", GType.ACOUSTIC, 6, GWood.BRAZILIAN_ROSEWOOD, GWood.BRAZILIAN_ROSEWOOD)
     )
     inventory.add_guitar(
-        "0004", 444.00, GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER
+        "0004", 444.00, GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, 6, GWood.ALDER, GWood.ALDER)
     )
 
 
 def main():
     inventory = Inventory()
     initialize_inventory(inventory)
+    for g in inventory.get_inventory():
+        print(g)
+    print()
     
-    spec = GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, GWood.ALDER, GWood.ALDER)
+    spec = GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, 8, GWood.ALDER, GWood.ALDER)
+    print(f"Search spec: {spec}")
+    print()
+
     matches = inventory.search(spec)
 
     if matches:

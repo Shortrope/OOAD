@@ -15,13 +15,9 @@ class Inventory:
         self,
         sn: str,
         price: float,
-        builder: GBuilder,
-        model: str,
-        type: GType,
-        back_wood: GWood,
-        top_wood: GWood,
+        spec: GuitarSpec
     ) -> None:
-        guitar = Guitar(sn, price, builder, model, type, back_wood, top_wood)
+        guitar = Guitar(sn, price, spec)
         self._guitars.append(guitar)
 
     def get_guitar(self, sn: str) -> Optional[Guitar]:

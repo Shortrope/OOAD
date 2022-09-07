@@ -8,17 +8,19 @@ class GuitarSpec:
         builder: GBuilder,
         model: str,
         type: GType,
+        num_strings: int,
         back_wood: GWood,
         top_wood: GWood,
     ) -> None:
         self._builder = builder
         self._model = model
         self._type = type
+        self._num_strings = num_strings
         self._back_wood = back_wood
         self._top_wood = top_wood
 
     def __str__(self):
-        return f"{self.builder.value}, {self.model}, {self.type.value}, {self.back_wood.value}, {self.top_wood.value}"
+        return f"{self.builder.value}, {self.model}, {self.type.value}, {self._num_strings} string, {self.back_wood.value}, {self.top_wood.value}"
 
     @property
     def builder(self) -> GBuilder:
@@ -31,6 +33,10 @@ class GuitarSpec:
     @property
     def type(self) -> GType:
         return self._type
+    
+    @property
+    def num_strings(self) -> int:
+        return self._num_strings
 
     @property
     def back_wood(self) -> GWood:
