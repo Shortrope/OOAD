@@ -1,5 +1,8 @@
 *.swp
+*.un~
+*.*~
 __pycache__/
+.mypy_cache/
 .pytext_cache/
 .env
 .venv
