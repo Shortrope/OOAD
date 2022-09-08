@@ -29,22 +29,8 @@ class Inventory:
     def search(self, search_spec: GuitarSpec) -> list:
         matches = []
         for guitar in self._guitars:
-            if search_spec.builder != guitar.spec.builder:
-                continue
-
-            if search_spec.model != guitar.spec.model:
-                continue
-
-            if search_spec.type != guitar.spec.type:
-                continue
-
-            if search_spec.back_wood != guitar.spec.back_wood:
-                continue
-
-            if search_spec.top_wood != guitar.spec.top_wood:
-                continue
-
-            matches.append(guitar)
+            if guitar.spec.equals(search_spec):
+                matches.append(guitar)
 
         return matches
 

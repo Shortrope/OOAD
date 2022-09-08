@@ -24,15 +24,10 @@ def initialize_inventory(inventory: Inventory) -> None:
 def main():
     inventory = Inventory()
     initialize_inventory(inventory)
-    for g in inventory.get_inventory():
-        print(g)
-    print()
     
-    spec = GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, 8, GWood.ALDER, GWood.ALDER)
-    print(f"Search spec: {spec}")
-    print()
+    search_spec = GuitarSpec(GBuilder.FENDER, "stratocaster", GType.ELECTRIC, 6, GWood.ALDER, GWood.ALDER)
 
-    matches = inventory.search(spec)
+    matches = inventory.search(search_spec)
 
     if matches:
         print("You may like these guitars:")

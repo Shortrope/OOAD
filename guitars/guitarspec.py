@@ -45,3 +45,24 @@ class GuitarSpec:
     @property
     def top_wood(self) -> GWood:
         return self._top_wood
+
+    def equals(self, other_spec) -> bool:
+        if self.builder != other_spec.builder:
+            return False
+        
+        if self.model != other_spec.model:
+            return False
+        
+        if self.type != other_spec.type:
+            return False
+        
+        if self.num_strings != other_spec.num_strings:
+            return False
+
+        if self.top_wood != other_spec.top_wood:
+            return False
+
+        if self.back_wood != other_spec.back_wood:
+            return False
+        
+        return True
