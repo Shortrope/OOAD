@@ -1,8 +1,10 @@
+from barksensor import BarkSensor
 from dogdoor import DogDoor
 from remote import Remote
 
 door = DogDoor()
 remote = Remote(door)
+bark_sensor = BarkSensor(door)
 
 
 def main() -> None:
@@ -11,13 +13,11 @@ def main() -> None:
     print()
 
     print("Fido barks to go outside...")
+    print("Pressing Button...")
     remote.press_button()
-    print("Button pressed...")
     print(f"Is the Dog Door open? {door.is_open()}")
 
     print("\nFido has gone outside...")
-    remote.press_button()
-    print("Button pressed...")
     print(f"Is the Dog Door open? {door.is_open()}")
 
     print("\nFido is all done...")
@@ -26,8 +26,28 @@ def main() -> None:
     print(f"Is the Dog Door open? {door.is_open()}")
 
     print("\nFido is back inside...")
-    remote.press_button()
-    print("Button pressed...")
+    print(f"Is the Dog Door open? {door.is_open()}")
+    print()
+    print()
+
+    print("DogDoor/Bark Sensor Simulator")
+    print(f"Is the Dog Door open? {door.is_open()}")
+    print()
+
+    print("Fido barks to go outside...")
+    print("Sensor Hears a bark...")
+    bark_sensor.recognizer("bark")
+    print(f"Is the Dog Door open? {door.is_open()}")
+
+    print("\nFido has gone outside...")
+    print(f"Is the Dog Door open? {door.is_open()}")
+
+    print("\nFido is all done...")
+    print("Fido barks to get back inside...")
+    bark_sensor.recognizer("bark")
+    print(f"Is the Dog Door open? {door.is_open()}")
+
+    print("\nFido is back inside...")
     print(f"Is the Dog Door open? {door.is_open()}")
     print()
 
